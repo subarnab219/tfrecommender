@@ -194,22 +194,3 @@ class tfrecommender(object):
         predictions = self.tf_prediction.eval(session=get_session(), feed_dict=feed_dict)
 
         return predictions
-
-
-# In[149]:
-
-
-ML_100K_PATH = os.path.join('processed','ml-100k','ml-100k')
-df_raw_ratings = pd.read_csv(os.path.join(ML_100K_PATH, 'u.data'), sep='\t',
-                      names=["user_id", "item_id", "rating", "timestamp"])
-df_raw_ratings.head()
-
-
-# In[150]:
-
-
-var = np.random.rand(3, 300)
-model = tfrecommender()
-chk = model.fit(df_raw_ratings['user_id'], df_raw_ratings['item_id'], df_raw_ratings['rating'], 
-                valid_size = 0.2, embedding_size = 30, reg_param = 0.01, learning_rate = 0.01)
-
