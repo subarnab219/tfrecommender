@@ -1,0 +1,7 @@
+language: python
+python:
+ - "stable"
+install:
+ - pip install unittest2
+script: python base_explicitfeedback.py
+
